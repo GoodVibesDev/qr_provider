@@ -2,7 +2,7 @@ import 'package:barcode/barcode.dart';
 import 'package:dart_frog/dart_frog.dart';
 
 Future<Response> onRequest(RequestContext context) async {
-  final body = await context.request.body();
+  final body = context.request.uri.queryParameters['id'] ?? '';
   final qr = Barcode.qrCode();
   final svg = qr.toSvg(body, width: 300, height: 300);
 
